@@ -1,28 +1,19 @@
-import * as THREE from 'three'
-import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls'
+import * as THREE from 'three';
 import createRenderer from './renderer';
-import createScene from './scenes/portfolioScene'
+import createScene from './scenes/portfolioScene';
+import createCamera from './components/camera';
 
-const app = (canvas) => {
+const app = async (canvas) => {
+  const sceneSetup = await createScene(canvas);
+  const renderer = createRenderer(canvas);
 
-    const scene = createScene();
-    const renderer = createRenderer(canvas);
+  const animate = () => {
+    requestAnimationFrame(animate);
+    renderer.update(sceneSetup);
+    sceneSetup.update();
+  };
 
-    const camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 1, 10000);
-    const controls = new OrbitControls(camera, renderer.domElement);
+  animate();
+};
 
-    camera.position.set(0, 20, 100);
-    controls.update();
-
-    const animate = () => {
-        requestAnimationFrame(animate);
-
-        controls.update();
-
-        renderer.render(scene, camera);
-    }
-
-    animate();
-}
-
-export default app; 
+export default app;
