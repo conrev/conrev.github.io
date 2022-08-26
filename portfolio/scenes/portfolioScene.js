@@ -27,12 +27,12 @@ const createScene = async (canvas) => {
   const size = 100;
   const divisions = 100;
 
-  const gridHelper = new THREE.GridHelper(size, divisions);
-  scene.add(gridHelper);
-  const axesHelper = new THREE.AxesHelper(5);
-  scene.add(axesHelper);
-  const cameraHelper = new THREE.CameraHelper(camera.object);
-  scene.add(cameraHelper);
+  // const gridHelper = new THREE.GridHelper(size, divisions);
+  // scene.add(gridHelper);
+  // const axesHelper = new THREE.AxesHelper(5);
+  // scene.add(axesHelper);
+  // const cameraHelper = new THREE.CameraHelper(camera.object);
+  // scene.add(cameraHelper);
   const lightHelper = new THREE.DirectionalLightHelper(
     sunlight.object,
     1

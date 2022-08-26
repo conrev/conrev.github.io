@@ -4,4 +4,5 @@ export default [
     filePath: '/models/room.glb',
     type: 'gltf',
   },
+  {},
 ];

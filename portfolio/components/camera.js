@@ -9,6 +9,7 @@ const createCamera = (canvas) => {
     10000
   );
   const controls = new OrbitControls(camera, canvas);
+  controls.maxDistance = 50;
   camera.position.set(10, 7, 17);
 
   const update = () => {
