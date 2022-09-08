@@ -6,11 +6,9 @@ import createController from './controls';
 const app = async (canvas) => {
   const sceneSetup = await createScene(canvas);
   const renderer = createRenderer(canvas);
-  const controller = createController(sceneSetup);
 
   const animate = () => {
     requestAnimationFrame(animate);
-    controller.update(sceneSetup);
     renderer.update(sceneSetup);
     sceneSetup.update();
   };

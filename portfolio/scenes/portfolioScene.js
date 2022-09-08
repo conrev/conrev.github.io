@@ -7,6 +7,7 @@ import {
   createAmbientLight,
 } from '../components/lighting';
 import createPlane from '../components/plane';
+import createController from '../controls';
 
 const createScene = async (canvas) => {
   const scene = new THREE.Scene();
@@ -17,8 +18,7 @@ const createScene = async (canvas) => {
   const ambientlight = createAmbientLight();
   const plane = createPlane();
 
-  const camera = createCamera(canvas);
-
+  const camera = createCamera();
   scene.add(room.object);
   scene.add(sunlight.object);
   scene.add(ambientlight.object);
@@ -39,8 +39,10 @@ const createScene = async (canvas) => {
   );
   scene.add(lightHelper);
 
+  const controls = createController(canvas, scene, camera.object);
+
   const update = () => {
-    camera.update();
+    controls.update();
   };
 
   return {
